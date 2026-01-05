@@ -21,7 +21,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.CONFLICT)
                 .body(errorResponse);
     }
-    // BONUS: Captura erros gerais inesperados para não vazar stack trace nunca mais
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDTO> handleGeneralException(Exception e) {
 
@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR.value(), // 500
                 LocalDateTime.now()
         );
-        // Aqui você logaria o erro real no console para o desenvolvedor ver
+
         e.printStackTrace();
 
         return ResponseEntity
