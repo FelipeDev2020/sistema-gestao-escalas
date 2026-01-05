@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"> <head>
+    <title>Novo Funcionário</title>
+</head>
+
+<body>
+
+<section layout:fragment="conteudo">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Cadastrar Funcionário</h4>
+                </div>
+                <div class="card-body">
+
+                    <form th:action="@{/ui/funcionarios/salvar}" method="post" th:object="${funcionarioDTO}">
+
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="nome" th:field="*{nome}" required placeholder="Ex: James Gosling">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cargo" class="form-label">Cargo</label>
+                            <input type="text" class="form-control" id="cargo" th:field="*{cargo}" required placeholder="Ex: Desenvolvedor Java">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail Corporativo</label>
+                            <input type="email" class="form-control" id="email" th:field="*{email}" required placeholder="james@java.com">
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">Salvar Funcionário</button>
+                            <a th:href="@{/ui/funcionarios/novo}" class="btn btn-secondary">Limpar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>

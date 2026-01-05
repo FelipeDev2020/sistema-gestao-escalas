@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head><title>Novo Turno</title></head>
+
+<body>
+<section layout:fragment="conteudo">
+  <div class="card shadow-sm col-md-6 mx-auto">
+    <div class="card-header bg-success text-white"><h4>Cadastrar Turno</h4></div>
+    <div class="card-body">
+      <form th:action="@{/ui/turnos/salvar}" method="post" th:object="${turnoDTO}">
+
+        <div class="mb-3">
+          <label>Nome do Turno</label>
+          <input type="text" class="form-control" th:field="*{nome}" placeholder="Ex: Matutino" required>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label>Início</label>
+            <input type="time" class="form-control" th:field="*{horaInicio}" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label>Fim</label>
+            <input type="time" class="form-control" th:field="*{horaFim}" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Salvar Turno</button>
+      </form>
+    </div>
+  </div>
+</section>
+</body>
+</html>

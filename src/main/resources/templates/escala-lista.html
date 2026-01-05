@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head><title>Quadro de Escalas</title></head>
+
+<body>
+<section layout:fragment="conteudo">
+
+    <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
+        <h2>Quadro de Escalas</h2>
+        <a th:href="@{/ui/escalas/novo}" class="btn btn-primary">+ Nova Escala</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Data</th>
+                    <th>Funcionário</th>
+                    <th>Turno</th>
+                    <th>Horário</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${listaEscalas.empty}">
+                    <td colspan="5" class="text-center">Nenhuma escala cadastrada.</td>
+                </tr>
+                <tr th:each="escala : ${listaEscalas}">
+                    <td th:text="${escala.id}">1</td>
+                    <td th:text="${escala.dia}">2026-01-01</td>
+                    <td th:text="${escala.funcionario.nome}">João</td>
+                    <td th:text="${escala.turno.nome}">Manhã</td>
+                    <td th:text="|${escala.turno.horaInicio} - ${escala.turno.horaFim}|">08:00 - 12:00</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>
