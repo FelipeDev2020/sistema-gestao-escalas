@@ -26,7 +26,7 @@ public class PageController {
     private final FuncionarioRepository funcionarioRepository;
     private final TurnoRepository turnoRepository;
 
-    // CONSTRUTOR UNIFICADO
+    // CONSTRUTOR UNIFICADO:
     public PageController(FuncionarioService funcionarioService,
                           TurnoService turnoService,
                           EscalaService escalaService,
