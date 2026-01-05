@@ -26,8 +26,7 @@ public class PageController {
     private final FuncionarioRepository funcionarioRepository;
     private final TurnoRepository turnoRepository;
 
-    // CONSTRUTOR UNIFICADO: O Spring usa isso para injetar TUDO.
-    // Se você esqueceu de adicionar os parâmetros aqui, esse foi o seu erro 500.
+    // CONSTRUTOR UNIFICADO
     public PageController(FuncionarioService funcionarioService,
                           TurnoService turnoService,
                           EscalaService escalaService,
