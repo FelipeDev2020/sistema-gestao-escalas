@@ -11,6 +11,6 @@ import java.util.List;
 public interface EscalaRepository extends JpaRepository<Escala, Long> {
     List<Escala> findByDiaBetween(LocalDate dataInicio, LocalDate dataFim);
 
-    // Método extra útil: Verificar se já existe escala para esse funcionário nesse dia
+    // Verificar se já existe escala para esse funcionário nesse dia
     boolean existsByFuncionarioIdAndDia(Long funcionarioId, LocalDate dia);
 }

@@ -19,7 +19,7 @@ public class EscalaService {
     private final FuncionarioRepository funcionarioRepository;
     private final TurnoRepository turnoRepository;
 
-    // Injeção de dependência tripla. O Spring resolve isso sozinho.
+    // Injeção de dependência tripla.
     public EscalaService(EscalaRepository escalaRepository,
                          FuncionarioRepository funcionarioRepository,
                          TurnoRepository turnoRepository) {
@@ -29,19 +29,19 @@ public class EscalaService {
     }
 
     public EscalaResponseDTO cadastrar(EscalaRequestDTO dto) {
-        // 1. Validação de Conflito de Horário
+        // Validação de Conflito de Horário
         if (escalaRepository.existsByFuncionarioIdAndDia(dto.funcionarioId(), dto.data())) {
             throw new IllegalArgumentException("Esse funcionário já tem escala para o dia " + dto.data());
         }
 
-        // 2. Buscar Entidades (Se não achar, estoura erro)
+        // Buscar Entidades (Se não achar, estoura erro)
         Funcionario funcionario = funcionarioRepository.findById(dto.funcionarioId())
                 .orElseThrow(() -> new IllegalArgumentException("Funcionário não encontrado"));
 
         Turno turno = turnoRepository.findById(dto.turnoId())
                 .orElseThrow(() -> new IllegalArgumentException("Turno não encontrado"));
 
-        // 3. Montar e Salvar
+        // Montar e Salvar
         Escala escala = new Escala();
         escala.setFuncionario(funcionario);
         escala.setTurno(turno);
